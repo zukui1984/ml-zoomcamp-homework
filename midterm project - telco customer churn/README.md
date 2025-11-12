@@ -14,7 +14,7 @@ Customer churn (when customers stop using a service) costs the telecom industry 
 ## Installation & Setup
 
 ### Prerequisites
-- Python 3.9+
+- Python 3.9+: sklearn, pandas, numpy, seaborn
 - pipenv (or pip)
 - Docker (optional, for containerization)
 
@@ -29,4 +29,33 @@ Customer churn (when customers stop using a service) costs the telecom industry 
 - **Target**: Binary classification (Churn: Yes/No)
 
 ## Project Structure
+1. **Install dependencies (VS Code)**
+   - pip install pipenv
+   - pipenv install
+     <img width="945" height="146" alt="image" src="https://github.com/user-attachments/assets/d2d1e616-b296-4c2c-b693-90a4690efd50" />
+   - pipenv install --dev
+     <img width="945" height="146" alt="image" src="https://github.com/user-attachments/assets/9a457aa1-1a93-4a3e-85d9-8262ade8f3d8" />
+2. **Create & work with jupyter notebook** & run pipenv run jupyter lab 
+   *Content on notebook* 
+    - Data cleaning and preparation
+    - Extensive EDA with visualizations
+    - Feature engineering
+    - Model comparison (Logistic Regression, Decision Tree, Random Forest, XGBoost)
+    - Hyperparameter tuning
+    - Final model evaluation
+3. Train Model
+   pipenv run python train.py
+   <img width="945" height="565" alt="image" src="https://github.com/user-attachments/assets/51d8949c-d912-4a2a-8628-41899352dd5b" />
+
+5. Run web service (locally)
+   pipenv run python predict.py
+  <img width="518" height="209" alt="image" src="https://github.com/user-attachments/assets/86903b96-c342-42e2-8267-dc5cdb24e19f" />
+
+6. Docker:
+   a. Build image: docker build -t churn-prediction .
+   <img width="945" height="464" alt="image" src="https://github.com/user-attachments/assets/dba84564-b1e5-488c-95a1-2174129dd480" />
+
+   b. Run container: docker run -p 9696:9696 churn-prediction
+   
+8. 
 
