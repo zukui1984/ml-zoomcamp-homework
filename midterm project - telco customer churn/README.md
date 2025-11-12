@@ -1,73 +1,99 @@
-# Telco Customer Churn Prediction
+# Customer Churn Prediction - ML Project
 
-Predict customer churn for telecom companies using machine learning to enable proactive retention strategies.
+A machine learning project that predicts customer churn for a telecom company using XGBoost.
 
-## Problem Description
+## 📊 What This Project Does
 
-Customer churn (when customers stop using a service) costs the telecom industry billions annually. This project builds a machine learning model to predict which customers are likely to churn, allowing companies to:
+This project helps telecom companies identify customers who are likely to stop using their services. By predicting churn early, companies can take action to keep their customers and reduce losses.
 
-- Identify at-risk customers before they leave
-- Offer targeted retention incentives
-- Reduce customer acquisition costs
-- Improve customer lifetime value
+## 📁 Dataset
 
-## Installation & Setup
+**Telco Customer Churn Dataset**
+
+- **7,043 customers** with detailed information
+- **21 features** including customer demographics, services, and billing
+- **Target Variable:** Churn (26.5%) vs No Churn (73.5%)
+
+![Churn Distribution](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/1-pic-churn.jpg)
+
+## 📈 Data Exploration
+
+### Numerical Features Distribution
+
+The dataset includes three key numerical features:
+
+- **Tenure:** How long the customer has been with the company (0-72 months)
+- **Monthly Charges:** Amount charged per month ($18-$119)
+- **Total Charges:** Total amount paid ($0-$8,685)
+
+![Numerical Features](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/2-pic-distributio%20numerical%20features.jpg)
+
+### Feature Correlations
+
+**Key Finding:** Tenure shows the strongest correlation - customers with longer tenure are less likely to churn.
+
+![Feature Correlation](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/3-pic-feature_correlation.jpg)
+
+## 🤖 Model Comparison
+
+I tested four different machine learning models:
+
+| Model | Validation AUC Score |
+|-------|---------------------|
+| Logistic Regression | 0.8398 ⭐ |
+| Random Forest | 0.8380 |
+| Decision Tree | 0.8207 |
+| XGBoost | 0.8192 |
+
+![Model Performance](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/4-pic-model_perfomance_comparison.jpg)
+
+**Winner:** XGBoost was selected after hyperparameter tuning.
+
+## 🎯 Most Important Features
+
+Top features that influence churn predictions:
+
+1. Contract type (month-to-month vs long-term)
+2. Tenure (how long they've been a customer)
+3. Internet service type
+4. Payment method
+
+![Feature Importance](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/6-pic-most-important-features.jpg)
+
+## 📊 Final Model Performance
+
+### Performance Metrics
+
+- **AUC Score: 0.8497** - Excellent ability to distinguish churners
+- **Accuracy: 77.6%** - Correctly predicts most customers
+- **Precision: 56.1%** - When predicting churn, correct 56% of the time
+- **Recall: 71.7%** - Catches 72% of customers who actually churn
+- **F1-Score: 0.6291** - Balanced measure
+- **Optimal Threshold: 0.34**
+
+### Confusion Matrix
+
+![Confusion Matrix](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/5-pic-confusion-matrix-test-set.jpg)
+
+**Results:**
+
+- **938 customers:** Correctly predicted as "Not Churn"
+- **198 customers:** Correctly predicted as "Churn"
+- **97 customers:** False positives
+- **176 customers:** False negatives
+
+The model is especially good at catching customers who will churn (71.7% recall).
+
+## 🛠 Technologies Used
+
+- **Python** - Programming language
+- **Pandas & NumPy** - Data manipulation
+- **Matplotlib & Seaborn** - Visualization
+- **Scikit-learn** - Machine learning
+- **XGBoost** - Final model
+- **Jupyter Notebook** - Development
+
+## 📦 Installation & Setup
 
 ### Prerequisites
-- Python 3.9+: sklearn, pandas, numpy, seaborn
-- pipenv (or pip)
-- Docker (optional, for containerization)
-
-## Dataset
-
-- **Source**: IBM Telco Customer Churn Dataset from Kaggle - [LINK](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
-- **Size**: 7,043 customers
-- **Features**: 21 features including:
-  - Demographics: gender, senior citizen status, partner, dependents
-  - Services: phone, internet, streaming, security
-  - Account: contract type, payment method, charges
-- **Target**: Binary classification (Churn: Yes/No)
-
-## Project Structure
-1. **Install dependencies (VS Code)**
-   - pip install pipenv
-   - pipenv install
-     <img width="945" height="146" alt="image" src="https://github.com/user-attachments/assets/d2d1e616-b296-4c2c-b693-90a4690efd50" />
-   - pipenv install --dev
-     <img width="945" height="146" alt="image" src="https://github.com/user-attachments/assets/9a457aa1-1a93-4a3e-85d9-8262ade8f3d8" />
-2. **Create & work with jupyter notebook** & run pipenv run jupyter lab 
-   *Content on notebook* 
-    - Data cleaning and preparation
-    - Extensive EDA with visualizations
-    - Feature engineering
-    - Model comparison (Logistic Regression, Decision Tree, Random Forest, XGBoost)
-    - Hyperparameter tuning
-    - Final model evaluation
-3. Train Model
-   pipenv run python train.py
-   <img width="945" height="565" alt="image" src="https://github.com/user-attachments/assets/51d8949c-d912-4a2a-8628-41899352dd5b" />
-
-5. Run web service (locally)
-   pipenv run python predict.py
-   
-  <img width="435" height="238" alt="image" src="https://github.com/user-attachments/assets/a2d128ce-d447-425d-acbb-60f49681a9f8" />
-
-  after that and test "run localhost:9696"
-  
-  <img width="398" height="284" alt="image" src="https://github.com/user-attachments/assets/b4d9934d-c6b2-4bd0-bee7-e772c58e5dd0" />
-
-  run localhost:9696/predict
-  
-  <img width="582" height="266" alt="image" src="https://github.com/user-attachments/assets/a9613a9f-a7f8-4dad-a298-7e9ad100c350" />
-
-  run localhost:9696/health
-  <img width="110" height="72" alt="image" src="https://github.com/user-attachments/assets/987108e9-45a4-43d8-a15c-2d635ed40a95" />
-
-6. Docker:
-   a. Build image: docker build -t churn-prediction .
-   <img width="945" height="464" alt="image" src="https://github.com/user-attachments/assets/dba84564-b1e5-488c-95a1-2174129dd480" />
-
-   b. Run container: docker run -p 9696:9696 churn-prediction
-   
-8. 
 
