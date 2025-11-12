@@ -1,4 +1,4 @@
-# Customer Churn Prediction - ML Project
+# Telco Customer Churn Prediction - ML Project
 
 A machine learning project that predicts customer churn for a telecom company using XGBoost.
 
@@ -68,8 +68,6 @@ Top features that influence churn predictions:
 - **Accuracy: 77.6%** - Correctly predicts most customers
 - **Precision: 56.1%** - When predicting churn, correct 56% of the time
 - **Recall: 71.7%** - Catches 72% of customers who actually churn
-- **F1-Score: 0.6291** - Balanced measure
-- **Optimal Threshold: 0.34**
 
 ### Confusion Matrix
 
@@ -95,5 +93,67 @@ The model is especially good at catching customers who will churn (71.7% recall)
 
 ## 📦 Installation & Setup
 
-### Prerequisites
+### 1. Navigate to project
+cd telco-churn
 
+### 2. Setup environment
+pipenv install
+pipenv install --dev
+pip install pandas numpy scikit-learn matplotlib seaborn xgboost flask gunicorn (VS Code)
+
+### 3. Open in VS Code
+code .
+
+### 4. Run notebook in VS Code
+  - Open notebook.ipynb
+  - Select Pipenv kernel
+  - Run all cells (Ctrl+Shift+Enter)
+  - Verify model.json and dv.pkl are created
+
+### 5. Test training script
+pipenv run python train.py
+<img width="945" height="565" alt="image" src="https://github.com/user-attachments/assets/91300926-0910-4d08-a4d2-a0eaaee382cf" />
+
+### 6. Start prediction service
+pipenv run python predict.py
+#### Keep this terminal open!
+<img width="945" height="440" alt="image" src="https://github.com/user-attachments/assets/fc365b3f-2048-4d30-9b29-67dede491f9e" />
+
+### 7. Open new terminal (Ctrl+Shift+`)
+#### Test prediction
+curl -X POST http://localhost:9696/predict \
+  -H "Content-Type: application/json" \
+  -d "{\"gender\":\"female\",\"seniorcitizen\":0,\"partner\":\"yes\",\"dependents\":\"no\",\"tenure\":12,\"phoneservice\":\"yes\",\"internetservice\":\"fiber optic\",\"contract\":\"month-to-month\",\"monthlycharges\":85.0,\"totalcharges\":1020.0,\"multiplelines\":\"no\",\"onlinesecurity\":\"no\",\"onlinebackup\":\"no\",\"deviceprotection\":\"no\",\"techsupport\":\"no\",\"streamingtv\":\"yes\",\"streamingmovies\":\"yes\",\"paperlessbilling\":\"yes\",\"paymentmethod\":\"electronic check\"}"
+
+### 8. Build Docker
+docker build -t churn-prediction .
+<img width="945" height="464" alt="image" src="https://github.com/user-attachments/assets/764aa4b3-e4fa-4d70-adce-b1e28508231d" />
+
+### 9. Run Docker container
+docker run -p 9696:9696 churn-prediction
+
+### 10. Test Docker (new terminal)
+http://localhost:9696/
+
+<img width="373" height="296" alt="image" src="https://github.com/user-attachments/assets/e978e330-a7b2-4165-919a-156ce535900a" />
+
+http://localhost:9696/predict
+
+<img width="574" height="263" alt="image" src="https://github.com/user-attachments/assets/7ed812ce-237d-48b0-bc88-99efd130ab38" />
+
+http://localhost:9696/health
+
+<img width="103" height="65" alt="image" src="https://github.com/user-attachments/assets/30cddc3f-668c-4d1e-868e-3ebda9694f8b" />
+
+## 💡 Key Insights
+
+1. **Month-to-month contracts** have 42.7% churn rate - highest risk
+2. **Longer tenure** = lower churn risk
+3. **Fiber optic users** churn more than DSL users
+4. **Electronic check** payment correlates with higher churn
+
+## 📝 Model Optimization
+
+- Feature engineering (6 new features created)
+- Hyperparameter tuning (depth and learning rate)
+- Multiple model comparison
