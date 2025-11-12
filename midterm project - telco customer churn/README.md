@@ -11,18 +11,22 @@ Customer churn (when customers stop using a service) costs the telecom industry 
 - Reduce customer acquisition costs
 - Improve customer lifetime value
 
-**Business Impact**: Reducing churn by 5% can increase profits by 25-95% (Harvard Business Review)
+## Installation & Setup
+
+### Prerequisites
+- Python 3.9+
+- pipenv (or pip)
+- Docker (optional, for containerization)
 
 ## Dataset
 
-- **Source**: IBM Telco Customer Churn Dataset (available on Kaggle)
+- **Source**: IBM Telco Customer Churn Dataset from Kaggle - [LINK](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
 - **Size**: 7,043 customers
-- **Features**: 20 features including:
+- **Features**: 21 features including:
   - Demographics: gender, senior citizen status, partner, dependents
   - Services: phone, internet, streaming, security
   - Account: contract type, payment method, charges
 - **Target**: Binary classification (Churn: Yes/No)
-- **Download**: The dataset is included in `data/telco-customer-churn.csv`
 
 ## Project Structure
 
