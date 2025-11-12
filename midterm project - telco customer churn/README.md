@@ -49,7 +49,19 @@ Customer churn (when customers stop using a service) costs the telecom industry 
 
 5. Run web service (locally)
    pipenv run python predict.py
-  <img width="518" height="209" alt="image" src="https://github.com/user-attachments/assets/86903b96-c342-42e2-8267-dc5cdb24e19f" />
+   
+  <img width="435" height="238" alt="image" src="https://github.com/user-attachments/assets/a2d128ce-d447-425d-acbb-60f49681a9f8" />
+
+  after that and test "run localhost:9696"
+  
+  <img width="398" height="284" alt="image" src="https://github.com/user-attachments/assets/b4d9934d-c6b2-4bd0-bee7-e772c58e5dd0" />
+
+  run localhost:9696/predict
+  
+  <img width="582" height="266" alt="image" src="https://github.com/user-attachments/assets/a9613a9f-a7f8-4dad-a298-7e9ad100c350" />
+
+  run localhost:9696/health
+  <img width="110" height="72" alt="image" src="https://github.com/user-attachments/assets/987108e9-45a4-43d8-a15c-2d635ed40a95" />
 
 6. Docker:
    a. Build image: docker build -t churn-prediction .
