@@ -6,7 +6,7 @@ A machine learning project that predicts customer churn for a telecom company us
 
 This project helps telecom companies identify customers who are likely to stop using their services. By predicting churn early, companies can take action to keep their customers and reduce losses.
 
-## 📁 Dataset
+## 📁 Dataset from Kaggle - [Source](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
 
 **Telco Customer Churn Dataset**
 
