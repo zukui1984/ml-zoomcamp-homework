@@ -1,5 +1,25 @@
 # Telco Customer Churn Prediction - ML Project
 
+```
+midterm-project-telco-customer-churn/
+│
+├── data/
+│   └── telco-churn.csv      # Telco dataset
+│
+├── img/
+│   └── statistic pictures
+│
+├── Dockerfile            # For containerization
+├── README.md             # Project documentation
+├── dv.pkl                # DictVectorizer or similar object
+├── model.json            # Model metadata/config
+├── predict.py            # Script + web service for predictions
+├── requirements.txt      # Python dependencies
+├── telco-churn.ipynb     # Jupyter notebook: EDA & modeling
+├── train.py              # Training + model saving script
+
+```
+
 A machine learning project that predicts customer churn for a telecom company using XGBoost.
 
 ## 📊 What This Project Does
