@@ -1,34 +1,24 @@
-# Telco Customer Churn Prediction - ML Project
+# Telco Customer Churn Prediction 
 
-```
-midterm-project-telco-customer-churn/
-│
-├── data/
-│   └── telco-churn.csv      # Telco dataset
-│
-├── img/
-│   └── statistic pictures
-│
-├── Dockerfile            # For containerization
-├── README.md             # Project documentation
-├── dv.pkl                # DictVectorizer or similar object
-├── model.json            # Model metadata/config
-├── predict.py            # Script + web service for predictions
-├── requirements.txt      # Python dependencies
-├── telco-churn.ipynb     # Jupyter notebook: EDA & modeling
-├── train.py              # Training + model saving script
+## Problem description
 
-```
+Telecom companies lose significant revenue when existing customers cancel their contracts and switch to competitors, a phenomenon known as customer churn. The goal of this project is to predict the probability that a customer will churn in the next billing period based on their contract details, service usage, and demographic information. With a reliable churn model, the business can proactively target at‑risk customers with retention campaigns (discounts, better plans, personalized offers) and reduce churn.
 
-A machine learning project that predicts customer churn for a telecom company using XGBoost.
+The problem is framed as a supervised binary classification task, where the target variable is `Churn` (Yes/No) and the output of the model is a churn probability between 0 and 1
 
-## 📊 What This Project Does
+With this model, a business could:
 
-This project helps telecom companies identify customers who are likely to stop using their services. By predicting churn early, companies can take action to keep their customers and reduce losses.
+- Identify high-risk customers.
+- Offer special deals or support to keep them.
+- Plan better retention campaigns.
 
-## 📁 Dataset from Kaggle - [Source](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
+## 📁 Telco Customer Churn Dataset from Kaggle - [Source](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
 
-**Telco Customer Churn Dataset**
+Key feature groups:
+
+- **Customer & account info:** `customerID`, `tenure`, `Contract`, `PaymentMethod`, `MonthlyCharges`, `TotalCharges`.
+- **Services:** `PhoneService`, `MultipleLines`, `InternetService`, `OnlineSecurity`, `OnlineBackup`, `DeviceProtection`, `TechSupport`, `StreamingTV`, `StreamingMovies`.
+- **Demographics (optional):** `gender`, `SeniorCitizen`, `Partner`, `Dependents`.
 
 - **7,043 customers** with detailed information
 - **21 features** including customer demographics, services, and billing
@@ -111,6 +101,28 @@ The model is especially good at catching customers who will churn (71.7% recall)
 - **XGBoost** - Final model
 - **Jupyter Notebook** - Development
 
+## Project Structure
+
+```
+midterm-project-telco-customer-churn/
+│
+├── data/
+│   └── telco-churn.csv      # Telco dataset
+│
+├── img/
+│   └── statistic pictures
+│
+├── Dockerfile            # For containerization
+├── README.md             # Project documentation
+├── dv.pkl                # DictVectorizer or similar object
+├── model.json            # Model metadata/config
+├── predict.py            # Script + web service for predictions
+├── requirements.txt      # Python dependencies
+├── telco-churn.ipynb     # Jupyter notebook: EDA & modeling
+├── train.py              # Training + model saving script
+
+```
+
 ## 📦 Installation & Setup
 
 ### 1. Navigate to project
@@ -167,13 +179,12 @@ http://localhost:9696/health
 
 ## 💡 Key Insights
 
-1. **Month-to-month contracts** have 42.7% churn rate - highest risk
+1. **Month-to-month contracts** have 42.7% churn rate - the highest risk segment
 2. **Longer tenure** = lower churn risk
 3. **Fiber optic users** churn more than DSL users
 4. **Electronic check** payment correlates with higher churn
 
-## 📝 Model Optimization
 
-- Feature engineering (6 new features created)
-- Hyperparameter tuning (depth and learning rate)
-- Multiple model comparison
+## 🎯 Conclusion
+This project demonstrates that customer churn is primarily driven by contract flexibility, service tenure, internet service type, and payment method. The final XGBoost model achieves **0.85 AUC** on test data, providing reliable churn probability predictions that can help telecom companies proactively identify at-risk customers and deploy targeted retention strategies—such as offering long-term contract incentives to month-to-month fiber optic customers or migrating electronic check users to automatic payment methods.
+
