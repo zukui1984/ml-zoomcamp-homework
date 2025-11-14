@@ -17,7 +17,7 @@ Customer churn represents a critical business challenge for telecom providers. W
 **Source:** [Kaggle Telco Customer Churn Dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) 
 
 - **7,043 customers** with detailed account information
-- **21 features** including demographics, services, and billing
+- **20 features** including demographics, services, and billing
 - **Target distribution:** 26.5% Churn, 73.5% No Churn
 
 ![Churn Distribution](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/1-pic-churn.jpg)
@@ -49,7 +49,7 @@ The three key numerical features show distinct patterns:
 ![Numerical Features Distribution](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/2-pic-distributio%20numerical%20features.jpg)
 
 - **Tenure:** Ranges from 0-72 months - newer customers churn more frequently
-- **Monthly Charges:** $18-$119 - higher charges correlate with fiber optic service
+- **Monthly Charges:** $18-$419 - higher charges correlate with fiber optic service
 - **Total Charges:** $0-$8,685 - directly related to tenure
 
 ### Feature Importance for Churn
@@ -92,9 +92,9 @@ The most influential features for predictions:
 ### Test Set Metrics
 
 - **AUC:** 0.8497 - Strong discrimination between churners and non-churners
-- **Accuracy:** 77.6%
-- **Precision:** 56.1% - Of predicted churners, 56% actually churn
-- **Recall:** 71.7% - Model catches 72% of actual churners
+- **Accuracy:** 80.6%
+- **Precision:** 67.1% - Of predicted churners, 56% actually churn
+- **Recall:** 52.9% - Model catches 72% of actual churners
 
 ![Confusion Matrix](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/5-pic-confusion-matrix-test-set.jpg)
 
@@ -195,7 +195,6 @@ curl -X POST http://localhost:9696/predict
 "paymentmethod": "electronic check"
 }'
 ```
-
 ### 8. Build Docker
 docker build -t churn-prediction .
 <img width="945" height="464" alt="image" src="https://github.com/user-attachments/assets/764aa4b3-e4fa-4d70-adce-b1e28508231d" />
@@ -209,13 +208,17 @@ docker run -p 9696:9696 churn-prediction
 http://localhost:9696/
 ```
 <img width="373" height="296" alt="image" src="https://github.com/user-attachments/assets/e978e330-a7b2-4165-919a-156ce535900a" />
+
 ```localhost
 http://localhost:9696/predict
 ```
+
 <img width="574" height="263" alt="image" src="https://github.com/user-attachments/assets/7ed812ce-237d-48b0-bc88-99efd130ab38" />
+
 ```localhost
 http://localhost:9696/health
 ```
+
 <img width="103" height="65" alt="image" src="https://github.com/user-attachments/assets/30cddc3f-668c-4d1e-868e-3ebda9694f8b" />
 
 ## 💡 Key Insights
@@ -236,5 +239,3 @@ Based on model insights, telecom companies should:
 - Review pricing strategy for fiber optic services
 - Encourage migration from electronic check to automatic payment methods
 - Focus retention campaigns on customers with low tenure, month-to-month contracts, and fiber optic service
-
-
