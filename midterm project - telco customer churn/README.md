@@ -151,13 +151,13 @@ venv\Scripts\activate
 pip install -r requirements.txt
 jupyter lab
 ```
-### 4. Test training script
+### 4. Test training script - [CODE](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/predict.py)
 ```
 python train.py
 ```
 <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/91300926-0910-4d08-a4d2-a0eaaee382cf" />
 
-### 5. Start prediction service
+### 5. Start prediction service - [CODE](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/predict.py)
 ```
 python predict.py
 ```
