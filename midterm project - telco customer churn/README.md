@@ -151,12 +151,11 @@ venv\Scripts\activate
 pip install -r requirements.txt
 jupyter lab
 ```
-
 ### 4. Test training script
 ```
 python train.py
 ```
-<img width="945" height="565" alt="image" src="https://github.com/user-attachments/assets/91300926-0910-4d08-a4d2-a0eaaee382cf" />
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/91300926-0910-4d08-a4d2-a0eaaee382cf" />
 
 ### 5. Start prediction service
 ```
@@ -197,7 +196,8 @@ Click http://localhost:5000/predict
 ```
 ### 7. Build Docker
 docker build -t churn-prediction .
-<img width="945" height="464" alt="image" src="https://github.com/user-attachments/assets/764aa4b3-e4fa-4d70-adce-b1e28508231d" />
+
+<img width="643" height="164" alt="image" src="https://github.com/user-attachments/assets/8673406d-cc96-4a75-8009-76681838febb" />
 
 ### 8. Run Docker container
 ```Docker
@@ -207,14 +207,13 @@ docker run -p 9696:9696 churn-prediction
 ```localhost
 http://localhost:9696/predict
 ```
-
-<img width="574" height="263" alt="image" src="https://github.com/user-attachments/assets/7ed812ce-237d-48b0-bc88-99efd130ab38" />
+<img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/1b7fae91-c2b8-4dd1-bc44-98fda9b1a8e6" />
 
 ```localhost
 http://localhost:9696/health
 ```
 
-<img width="103" height="65" alt="image" src="https://github.com/user-attachments/assets/30cddc3f-668c-4d1e-868e-3ebda9694f8b" />
+<img width="230" height="149" alt="image" src="https://github.com/user-attachments/assets/8feb96cc-7a21-4257-9d3e-e3a0f3c1c2c3" />
 
 ## 💡 Key Insights
 
