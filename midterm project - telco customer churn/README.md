@@ -136,32 +136,31 @@ midterm-project-telco-customer-churn/
 
 ## 📦 Installation & Setup
 
-### 1. Navigate to project
+### 1. Clone Repository
 ```
-cd telco-churn
+git clone https://github.com/your-username/telco-customer-churn.git
+cd telco-customer-churn
 ```
-### 2. Setup environment
+### 2. Create Virtual Environment
 ```
-pipenv install
-pipenv install --dev
-pip install pandas numpy scikit-learn matplotlib seaborn xgboost flask gunicorn
+python -m venv venv
+venv\Scripts\activate
 ```
-
-### 3. Run notebook in VS Code
-  - Open notebook.ipynb
-  - Select Pipenv kernel
-  - Run all cells (Ctrl+Shift+Enter)
-  - Verify model.json and dv.pkl are created
+### 3. Install dependecies & run jupyter notebook 
+```
+pip install -r requirements.txt
+jupyter lab
+```
 
 ### 4. Test training script
 ```
-pipenv run python train.py
+python train.py
 ```
 <img width="945" height="565" alt="image" src="https://github.com/user-attachments/assets/91300926-0910-4d08-a4d2-a0eaaee382cf" />
 
 ### 5. Start prediction service
 ```
-pipenv run python predict.py
+python predict.py
 ```
 #### Test prediction (locally) - Keep this terminal open!
 <img width="400" height="200" alt="image" src="https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/7-pic-flask-localhost.jpg" />
