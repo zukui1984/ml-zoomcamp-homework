@@ -76,21 +76,21 @@ def main():
     print("TRAINING START")
         
     # Step 1: Load data
-    print("\n1. Loading data...")
+    print("\n1. Loading data")
     df = load_clean_data(DATA_FILE)
     print(f"   Loaded {len(df):,} records")
     
     # Step 2: Feature engineering
-    print("\n2. Engineering features...")
+    print("\n2. Engineering features")
     df = engineer_features(df)
     
     # Step 3: Prepare data
-    print("\n3. Splitting data...")
+    print("\n3. Splitting data")
     X_train, X_test, y_train, y_test = prepare_data(df)
     print(f"   Train: {len(X_train):,} | Test: {len(X_test):,}")
     
     # Step 4: Encode features
-    print("\n4. Encoding features...")
+    print("\n4. Encoding features")
     X_train_enc, X_test_enc, dv = encode_features(X_train, X_test)
     print(f"   Encoded features: {X_train_enc.shape[1]}")
     
@@ -99,14 +99,14 @@ def main():
     model = train_model(X_train_enc, y_train)
     
     # Step 6: Evaluate
-    print("\n6. Evaluating...")
+    print("\n6. Evaluating")
     dtest = xgb.DMatrix(X_test_enc)
     y_pred = model.predict(dtest)
     auc = roc_auc_score(y_test, y_pred)
     print(f"   Test AUC: {auc:.4f}")
     
     # Step 7: Save
-    print("\n7. Saving model...")
+    print("\n7. Saving model")
     model.save_model(MODEL_FILE)
     with open(DV_FILE, 'wb') as f:
         pickle.dump(dv, f)
@@ -118,4 +118,5 @@ def main():
 
 
 if __name__ == '__main__':
+
     main()
