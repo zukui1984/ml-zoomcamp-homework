@@ -141,16 +141,20 @@ midterm-project-telco-customer-churn/
 git clone https://github.com/your-username/telco-customer-churn.git
 cd telco-customer-churn
 ```
-### 2. Create Virtual Environment
-```
-python -m venv venv
-venv\Scripts\activate
-```
-### 3. Install dependecies & run jupyter notebook 
+### 2. Install dependecies
 ```
 pip install -r requirements.txt
 jupyter lab
 ```
+This installs all required packages:
+ - pandas, numpy, scikit-learn, xgboost, flask, gunicorn
+ - matplotlib, seaborn, jupyter notebook
+
+### 3. Run Jupyter Notebook: EDA + Model
+```
+jupyter lab
+```
+
 ### 4. Test training script - [CODE](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/predict.py)
 ```
 python train.py
@@ -161,7 +165,7 @@ python train.py
 ```
 python predict.py
 ```
-#### Test prediction (locally) - Keep this terminal open!
+#### Test prediction (locally PORT 5000) - Keep this terminal open!
 <img width="400" height="200" alt="image" src="https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/7-pic-flask-localhost.jpg" />
 
 Click http://localhost:5000/predict
@@ -199,15 +203,15 @@ docker build -t churn-prediction .
 
 <img width="643" height="164" alt="image" src="https://github.com/user-attachments/assets/8673406d-cc96-4a75-8009-76681838febb" />
 
-### 8. Run Docker container
+### 8. Run Docker container 
 ```Docker
 docker run -p 9696:9696 churn-prediction
 ```
-### 9. Test Docker (new terminal)
+### 9. Test Docker (new terminal PORT 9696)
 ```localhost
 http://localhost:9696/predict
 ```
-<img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/1b7fae91-c2b8-4dd1-bc44-98fda9b1a8e6" />
+<img width="270" height="352" alt="image" src="https://github.com/user-attachments/assets/22b306cc-492f-4e06-879f-0c8ff32a0787" />
 
 ```localhost
 http://localhost:9696/health
