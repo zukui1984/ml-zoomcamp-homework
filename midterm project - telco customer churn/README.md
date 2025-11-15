@@ -93,8 +93,8 @@ The most influential features for predictions:
 
 - **AUC:** 0.8497 - Strong discrimination between churners and non-churners
 - **Accuracy:** 80.6%
-- **Precision:** 67.1% - Of predicted churners, 56% actually churn
-- **Recall:** 52.9% - Model catches 72% of actual churners
+- **Precision:** 67.1% - Of predicted churners, 67% actually churn
+- **Recall:** 52.9% - Model catches 53% of actual churners
 
 ![Confusion Matrix](https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/5-pic-confusion-matrix-test-set.jpg)
 
@@ -104,7 +104,7 @@ The most influential features for predictions:
 - False Positives: 97 (predicted churn but stayed)
 - False Negatives: 176 (predicted stay but churned)
 
-The high recall (71.7%) ensures most at-risk customers are identified for retention campaigns.
+The model achieves good precision (67.1%), meaning when it predicts churn, it's correct two-thirds of the time, making retention campaigns cost-effective.
 
 ## Project Structure
 ```
@@ -129,10 +129,10 @@ midterm-project-telco-customer-churn/
 - **Python** - Programming language
 - **Pandas & NumPy** - Data manipulation
 - **Scikit-learn** - Preprocessing and baseline models
-- **XGBoost** - Final gradient boosting model
+- **XGBoost** - Gradient boosting 
 - **Flask** - REST API framework
 - **Docker** - Containerization
-- **Jupyter** - Interactive analysis
+- **Jupyter Notebook** - Interactive analysis
 
 ## 📦 Installation & Setup
 
@@ -144,71 +144,67 @@ cd telco-churn
 ```
 pipenv install
 pipenv install --dev
-pip install pandas numpy scikit-learn matplotlib seaborn xgboost flask gunicorn (VS Code)
+pip install pandas numpy scikit-learn matplotlib seaborn xgboost flask gunicorn
 ```
-### 3. Open in VS Code
-code .
 
-### 4. Run notebook in VS Code
+### 3. Run notebook in VS Code
   - Open notebook.ipynb
   - Select Pipenv kernel
   - Run all cells (Ctrl+Shift+Enter)
   - Verify model.json and dv.pkl are created
 
-### 5. Test training script
+### 4. Test training script
 ```
 pipenv run python train.py
 ```
 <img width="945" height="565" alt="image" src="https://github.com/user-attachments/assets/91300926-0910-4d08-a4d2-a0eaaee382cf" />
 
-### 6. Start prediction service
+### 5. Start prediction service
 ```
 pipenv run python predict.py
 ```
-#### Keep this terminal open!
-<img width="945" height="440" alt="image" src="https://github.com/user-attachments/assets/fc365b3f-2048-4d30-9b29-67dede491f9e" />
+#### Test prediction (locally) - Keep this terminal open!
+<img width="400" height="200" alt="image" src="https://github.com/zukui1984/ml-zoomcamp-homework/blob/master/midterm%20project%20-%20telco%20customer%20churn/img/7-pic-flask-localhost.jpg" />
 
-### 7. Open new terminal (Ctrl+Shift+`)
-#### Test prediction
+Click http://localhost:5000/predict
+
 ```
-curl -X POST http://localhost:9696/predict
--H "Content-Type: application/json"
--d '{
-"gender": "female",
-"seniorcitizen": 0,
-"partner": "yes",
-"dependents": "no",
-"tenure": 12,
-"phoneservice": "yes",
-"internetservice": "fiber optic",
-"contract": "month-to-month",
-"monthlycharges": 85.0,
-"totalcharges": 1020.0,
-"multiplelines": "no",
-"onlinesecurity": "no",
-"onlinebackup": "no",
-"deviceprotection": "no",
-"techsupport": "no",
-"streamingtv": "yes",
-"streamingmovies": "yes",
-"paperlessbilling": "yes",
-"paymentmethod": "electronic check"
-}'
+{
+  "endpoints": {
+    "/": "Service information (GET)",
+    "/health": "Health check (GET)",
+    "/predict": "Predict customer churn (GET for test, POST for production)"
+  },
+  "production_example": {
+    "body": {
+      "deviceprotection": "No",
+      "internetservice": "Fiber optic",
+      "monthlycharges": 70.0,
+      "onlinebackup": "Yes",
+      "onlinesecurity": "No",
+      "phoneservice": "Yes",
+      "streamingmovies": "No",
+      "streamingtv": "Yes",
+      "techsupport": "No",
+      "tenure": 12,
+      "totalcharges": 840.0
+    },
+    "method": "POST",
+    "url": "http://localhost:5000/predict"
+  },
+  "service": "Churn Prediction API",
+  "version": "1.0"
+}
 ```
-### 8. Build Docker
+### 7. Build Docker
 docker build -t churn-prediction .
 <img width="945" height="464" alt="image" src="https://github.com/user-attachments/assets/764aa4b3-e4fa-4d70-adce-b1e28508231d" />
 
-### 9. Run Docker container
+### 8. Run Docker container
 ```Docker
 docker run -p 9696:9696 churn-prediction
 ```
-### 10. Test Docker (new terminal)
-```localhost
-http://localhost:9696/
-```
-<img width="373" height="296" alt="image" src="https://github.com/user-attachments/assets/e978e330-a7b2-4165-919a-156ce535900a" />
-
+### 9. Test Docker (new terminal)
 ```localhost
 http://localhost:9696/predict
 ```
