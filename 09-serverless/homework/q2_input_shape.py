@@ -1,3 +1,10 @@
+## Answer
+Full input shape: ['s77', 3, 200, 200]
+Format: [batch, channels, height, width]
+Target size: 200x200
+###
+
+
 import onnxruntime as ort
 
 session = ort.InferenceSession("hair_classifier_v1.onnx")
@@ -18,3 +25,4 @@ else:
     width = input_shape[-1]
     
 print(f"Target size: {height}x{width}")
+
