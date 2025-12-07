@@ -1,3 +1,7 @@
+## Answer: 
+Model output: 0.0916
+###
+
 import numpy as np
 import onnxruntime as ort
 from images import download_image, prepare_image
@@ -25,5 +29,6 @@ X = np.expand_dims(x, axis=0)
 
 # Predict
 output = session.run([output_name], {input_name: X})[0][0, 0]
+
 
 print(f"Model output: {output:.4f}")
