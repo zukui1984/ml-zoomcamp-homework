@@ -1,3 +1,5 @@
+## Question nr 6 - Lambda
+
 import numpy as np
 import onnxruntime as ort
 from io import BytesIO
@@ -57,3 +59,4 @@ def lambda_handler(event, context):
             'prediction': result
         }
     }
+
