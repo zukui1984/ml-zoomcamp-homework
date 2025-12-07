@@ -1,3 +1,9 @@
+#### Answer:
+Original first pixel [R,G,B]: [ 61. 104.  22.]
+After preprocessing [R,G,B]: [-1.073294   -0.21498597 -1.4210021 ]
+(R channel): -1.0733
+#####
+
 import numpy as np
 from images import download_image, prepare_image
 
@@ -17,3 +23,4 @@ x = (x - mean) / std
 
 print(f"After preprocessing [R,G,B]: {x[0, 0]}")
 print(f"(R channel): {x[0, 0, 0]:.4f}")
+
