@@ -1,3 +1,5 @@
+### Answer: output
+
 import onnxruntime as ort
 
 # Load the model
@@ -10,3 +12,4 @@ print(f"Input name: {input_name}")
 # Output name
 output_name = session.get_outputs()[0].name
 print(f"Output name: {output_name}")
+
